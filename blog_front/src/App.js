@@ -1,21 +1,21 @@
 import React from 'react';
-import {BrowserRouter, Route, Link, Switch} from 'react-router-dom';
-import SideBar from './navbar/SideBar';
-import Home from './contents/home/Home';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import SideBar from './contents/SideBar';
+import Home from './contents/Home';
 import './css/App.scss'
-import NewPost from './contents/newPost/NewPost';
-import Detail from './contents/posting/Detail';
+import NewPost from './contents/NewPost';
+import Detail from './contents/Detail';
 import ModifyPost from './contents/ModifyPost';
 
 const App = () => {
     return (
         <BrowserRouter>
             <Switch>
+                {/* nav 없이 */}
                 <Route exact="exact" path='/newPost' component={NewPost}/>
                 <Route exact path='/modify/:postId' component={ModifyPost} />
-                <Route
-                    exact="exact"
-                    path='*'
+                {/* nav 포함 */}
+                <Route exact="exact" path='*'
                     component={() => (
                         <div id='wrapper'>
                             <SideBar/>

@@ -16,7 +16,6 @@
             height: 22vh;
         }
         width: 100%;
-        // border: 1px solid green;
         position: sticky;
         top: 0;
         background-image: url("../imgs/nav-img.jpg");
@@ -50,6 +49,5 @@
         @media #{$phone} {
             width: 100%;
         }
-        // border: 1px solid blue;
     }
 }

@@ -39,6 +39,9 @@
                 cursor: pointer;
             }
         }
+        .comment-tr {
+            height: 30px;
+        }
         th:nth-child(odd), td:nth-child(odd) {
             width: 20%;
         }

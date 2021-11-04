@@ -23,21 +23,21 @@ public class ReactController {
     private CommentRepository commentRepository;
 
     @RequestMapping(path = "/posting", method = RequestMethod.POST)
-    public ResponseEntity<Posts> savePost(@RequestBody postDTO data) {
+    public ResponseEntity<?> savePost(@RequestBody postDTO data) {
         int number = postRepository.findAll().size();
         Posts post = new Posts(Integer.toString(number+1), data.getTitle(), data.getContent());
         postRepository.save(post);
-        return ResponseEntity.ok(post);
+        return ResponseEntity.ok(postRepository.findAll(Sort.by(Sort.Direction.DESC, "id")));
     }
 
     @RequestMapping(path = "/posting", method = RequestMethod.PUT)
-    public ResponseEntity<Posts> updatePost(@RequestBody postDTO data) {
-        Posts posts = postRepository.findById(data.getId()).get();
-        posts.setTitle(data.getTitle());
-        posts.setContent(data.getContent());
-        postRepository.save(posts);
+    public ResponseEntity<?> updatePost(@RequestBody postDTO data) {
+        Posts post = postRepository.findById(data.getId()).get();
+        post.setTitle(data.getTitle());
+        post.setContent(data.getContent());
+        postRepository.save(post);
 
-        return ResponseEntity.ok(posts);
+        return ResponseEntity.ok(postRepository.findAll(Sort.by(Sort.Direction.DESC, "id")));
     }
 
     @RequestMapping(path = "/posting/{id}", method = RequestMethod.DELETE)
@@ -65,17 +65,17 @@ public class ReactController {
             else return;
         });
 
-        return ResponseEntity.ok(id + "deleted");
+        return ResponseEntity.ok(postRepository.findAll(Sort.by(Sort.Direction.DESC, "id")));
     }
 
     @RequestMapping(path = "/postings", method = RequestMethod.GET)
     public ResponseEntity<?> getPosts() {
-        return ResponseEntity.ok(postRepository.findAll());
+        return ResponseEntity.ok(postRepository.findAll(Sort.by(Sort.Direction.DESC, "id")));
     }
 
     @RequestMapping(path = "/comments", method = RequestMethod.GET)
     public ResponseEntity<?> getComments() {
-        return ResponseEntity.ok(commentRepository.findAll());
+        return ResponseEntity.ok(commentRepository.findAll(Sort.by(Sort.Direction.DESC, "id")));
     }
 
     @RequestMapping(path = "/comment", method = RequestMethod.POST)
@@ -86,13 +86,13 @@ public class ReactController {
         String id = Integer.toString(id2 + 1);
         Comments comment = new Comments(id, data.getPage(), data.getName(), data.getComment());
         commentRepository.save(comment);
-        return ResponseEntity.ok(comment);
+        return ResponseEntity.ok(commentRepository.findAll(Sort.by(Sort.Direction.DESC, "id")));
     }
 
     @RequestMapping(path = "/comment/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteComment(@PathVariable String id) {
         commentRepository.deleteById(id);
-        return ResponseEntity.ok(null);
+        return ResponseEntity.ok(commentRepository.findAll(Sort.by(Sort.Direction.DESC, "id")));
     }
 
     @Getter

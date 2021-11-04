@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import "../../css/Detail.scss";
-import buttonImg from "../../imgs/comment_delete.png";
+import "../css/Detail.scss";
+import buttonImg from "../imgs/comment_delete.png";
 
 function Detail({ location }) {
     const [value, setValue] = useState({page: "", name: "", comment: ""});
@@ -18,9 +18,7 @@ function Detail({ location }) {
         .then(({data}) => {
             if(data.length === comments.length)
                 return;
-            else {
-                setComments(data);
-            }
+            else setComments(data);
         })
     }, [comments]) //comment 변경 시 re-render
 
@@ -32,15 +30,12 @@ function Detail({ location }) {
         setValue({page: value.page, name: value.name, comment: e.target.value});
     }
 
-    const saveComment = () => {
+    const saveComment = () => { //저장 후 value 초기화
         if(window.confirm("댓글을 등록하시겠습니까?")) {
             if(value.name.length !== 0) {
                 axios.post("http://localhost:8080/comment", value)
                 .then(alert("등록이 완료되었습니다."))
-                .then(
-                    axios.get("http://localhost:8080/comments")
-                    .then(({data}) => {setComments(data);})
-                );
+                .then(({data}) => {setComments(data);});
             }
             else alert("이름을 입력하세요.");
         }
@@ -53,11 +48,17 @@ function Detail({ location }) {
         if(window.confirm("댓글을 삭제하시겠습니까?")) {
             axios.delete(`http://localhost:8080/comment/${element.id}`)
             .then(alert("삭제되었습니다."))
-            .then(
-                axios.get("http://localhost:8080/comments")
-                .then(({data}) => {setComments(data);})
-            );
+            .then(({data}) => {setComments(data);});
         }
+    }
+
+    const countComment = (page) => {
+        let count = 0;
+        comments.forEach(v => {
+            if(v.page === page)
+                count++;
+        })
+        return count;
     }
 
     return (
@@ -67,7 +68,7 @@ function Detail({ location }) {
             <hr />
             <p style={{marginTop: "3%", paddingBottom: "3%"}}>{location.state.info.content}</p>
             {/* 댓글 부분 */}
-            <div style= {{marginTop: "7%"}}><strong>전체 댓글({comments.length})</strong></div>
+            <div style= {{marginTop: "7%"}}><strong>전체 댓글({countComment(value.page)})</strong></div>
             <hr className= "comment-divide-line"/>
             <table className="comment-table">
             {

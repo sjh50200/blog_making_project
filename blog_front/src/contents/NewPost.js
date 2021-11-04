@@ -1,6 +1,6 @@
 import axios from 'axios';
-import React, {useEffect, useState} from 'react'
-import '../../css/NewPost.scss';
+import React, { useState } from 'react'
+import '../css/NewPost.scss';
 
 const NewPost = ({history}) => {
     const [value, setValue] = useState({title: "", content: ""});
@@ -10,7 +10,6 @@ const NewPost = ({history}) => {
             alert("제목을 입력하세요");
             return;
         }
-
         //통신 후 home으로
         axios
             .post("http://localhost:8080/posting", value)
@@ -32,9 +31,11 @@ const NewPost = ({history}) => {
 
     return (
         <div className='form-wrapper'>
+            {/* 제목 입력 */}
             <input className='title-input' type='text' placeholder='제목을 입력하세요.'
                 value={value.title} onChange={titleChange} />
             <hr className='divide-line'/>
+            {/* 내용 입력 */}
             <textarea className='text-area' placeholder='내용을 입력하세요.'
                 value={value.content} onChange={contentChange} />
             <button className='submit-button' onClick={clicked}>글쓰기</button>

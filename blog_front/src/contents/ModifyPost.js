@@ -30,16 +30,12 @@ function ModifyPost({location, history}) {
 
     return (
         <div className='form-wrapper'>
-            <input
-                className='title-input'
-                type='text'
-                value={value.title}
-                onChange={titleChange}></input>
+            {/* 제목 입력 */}
+            <input className='title-input' type='text' value={value.title}
+                onChange={titleChange} />
             <hr className='divide-line'/>
-            <textarea
-                className='text-area'
-                value={value.content}
-                onChange={contentChange}></textarea>
+            {/* 내용 입력 */}
+            <textarea className='text-area' value={value.content} onChange={contentChange} />
             <button className='submit-button' onClick={doModify}>수정하기</button>
         </div>
     )

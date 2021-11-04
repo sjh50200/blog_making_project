@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
-import '../../css/Home.scss';
+import '../css/Home.scss';
 import axios from 'axios';
-import modifyB from "../../imgs/modify.png";
-import deleteB from "../../imgs/delete.png";
+import modifyB from "../imgs/modify.png";
+import deleteB from "../imgs/delete.png";
 
-const Home = ({match}) => {
+const Home = () => {
     const [posts, setPosts] = useState([]); //게시물들 상태 저장
 
     useEffect(() => { //posts 모니터링
@@ -23,16 +23,14 @@ const Home = ({match}) => {
         if(window.confirm("정말 삭제하시겠습니까?")) {
             axios.delete(`http://localhost:8080/posting/${id}`)
             .then(alert("삭제 되었습니다."))
-            .then(() => {
-                axios.get('http://localhost:8080/postings')
-                .then(response => {setPosts(response.data)});
-            });
+            .then(({data}) => {setPosts(data);});
         }
     };
 
     return (
         <div>
             <div className='post-list'>
+                {/* 글 목록 윗 부분 */}
                 <div style={{height: "3vh"}}>
                     <div style={{float: "left", fontSize: "20px"}}>전체 글({posts.length})</div>
                     <Link to='/newPost'>
@@ -44,6 +42,7 @@ const Home = ({match}) => {
                     </Link>
                 </div>
                 <hr style={{marginTop: '20px'}}/> 
+                {/* 글 목록들 */}
                 {
                     posts.map((post) => (
                         <div>

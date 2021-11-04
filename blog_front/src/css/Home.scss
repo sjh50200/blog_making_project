@@ -1,0 +1,79 @@
+@import './Shared.scss';
+
+.post-list {
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 3%;
+    width: $postWidth;
+    @media #{$phone} {
+        width: 80%;
+    }
+    .new-button {
+        color: white;
+        text-align: center;
+        width: 90px;
+        height: 35px;
+        font-size: 18px;
+        border: none;
+        background: #976727;
+        border-radius: 5px;
+        float: right;
+        margin-left: auto;
+        margin-right: 5%;
+        margin-bottom: 5%;
+        &:hover {
+            cursor: pointer;
+            color:orange;
+        }
+    }
+    .post {
+        height : 150px;
+        @media #{$phone} {
+            height : 100px;
+        }
+        // border: 1px solid blueviolet
+        &:hover {
+            .title{
+                color: $divideLine;
+            }
+        }
+    }
+    .title, p {
+        color: black;
+    }
+    .post-grid {
+        display: grid;
+        grid-template-columns: 90% 10%;
+        .link-style {
+            text-decoration: none;
+        }
+        .post-tools {
+            // border: 1px solid green;
+            display: grid;
+            grid-template-rows: repeat(2, 50%);
+            .tool{
+                margin: auto;
+                .modify-button {
+                    background-color: $bgColor;
+                    border: none;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+                .delete-button {
+                    background-color: $bgColor;
+                    border: none;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}
+
+hr {
+    background-color: $divideLine;
+    height: $hrHeight;
+    border : none;
+}

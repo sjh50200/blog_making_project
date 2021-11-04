@@ -1,0 +1,55 @@
+@import "./Shared.scss";
+
+#wrapper {
+    @media #{$phone} {
+        display: grid;
+        grid-template-rows: 2fr 8fr;   
+    }
+    @media #{$desktop} {
+        display: grid;
+        grid-template-columns: 23% 77%;
+        grid-template-rows: 98vh;
+    }
+    #nav {
+        @media #{$phone} {
+            width: 100%;
+            height: 22vh;
+        }
+        width: 100%;
+        // border: 1px solid green;
+        position: sticky;
+        top: 0;
+        background-image: url("../imgs/nav-img.jpg");
+        background-size: cover;
+        text-align: center;
+        .blog-title {
+            @media #{$phone} {
+                margin-top: 5%;
+                margin-bottom: auto;
+                font-size: 25px;
+            }
+            margin-top: 40%;
+            margin-bottom: 0%;
+            font-size: 40px;
+            color: white;
+        }
+        .blogger-name {
+            margin-top: 3%;
+            font-size: 25px;
+            color: white;
+            @media #{$phone} {
+                margin-top: auto;
+                margin-bottom: auto;
+                font-size: 20px;
+            }
+        }
+    }
+    .contents {
+        background-color: $bgColor;
+        width: 100%;
+        @media #{$phone} {
+            width: 100%;
+        }
+        // border: 1px solid blue;
+    }
+}

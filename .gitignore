@@ -1,0 +1,63 @@
+###backend###
+
+HELP.md
+blog_back/target/
+blog_back/!.mvn/wrapper/maven-wrapper.jar
+blog_back/!**/src/main/**/target/
+blog_back/!**/src/test/**/target/
+
+### STS ###
+blog_back/.apt_generated
+blog_back/.classpath
+blog_back/.factorypath
+blog_back/.project
+blog_back/.settings
+blog_back/.springBeans
+blog_back/.sts4-cache
+
+### IntelliJ IDEA ###
+blog_back/.idea
+blog_back/*.iws
+blog_back/*.iml
+blog_back/*.ipr
+
+### NetBeans ###
+blog_back/nbproject/private/
+blog_back/nbbuild/
+blog_back/dist/
+blog_back/nbdist/
+blog_back/.nb-gradle/
+blog_back/build/
+blog_back/!**/src/main/**/build/
+blog_back/!**/src/test/**/build/
+
+### VS Code ###
+blog_back/.vscode/
+
+
+
+###frontend###
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+blog_front/node_modules
+blog_front/.pnp
+blog_front/.pnp.js
+
+# testing
+blog_front/coverage
+
+# production
+blog_front/build
+
+# misc
+blog_front/.DS_Store
+blog_front/.env.local
+blog_front/.env.development.local
+blog_front/.env.test.local
+blog_front/.env.production.local
+
+blog_front/npm-debug.log*
+blog_front/yarn-debug.log*
+blog_front/yarn-error.log*

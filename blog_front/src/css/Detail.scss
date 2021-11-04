@@ -1,0 +1,72 @@
+@import './Shared.scss';
+
+.post-detail {
+    width: $postWidth;
+    @media #{$phone} {
+        width: 80%;
+    }
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 3%;
+    hr{
+        background-color: $divideLine;
+        height: 1px;
+        border: none;
+    }
+    h1 {
+        text-align: center;
+    }
+    .comment-divide-line {
+        background-color: $divideLine;
+        height: 1px;
+    }
+
+    .comment-table {
+        width: 100%;
+        text-align: left;
+        font-size: 13px;
+        div {
+            font-weight: bold;
+        }
+        button {
+            background-color: $bgColor;
+            border: none;
+            img {
+                width: 14px;
+                height: 14px;
+            }
+            &:hover {
+                cursor: pointer;
+            }
+        }
+        th:nth-child(odd), td:nth-child(odd) {
+            width: 20%;
+        }
+        th:nth-child(even), td:nth-child(even) {
+            width: 80%;
+        }
+    }
+
+    .comment-grid {
+        display: grid;
+        grid-template-columns: 15% 75% 8%;
+        text-align: center;
+        margin-top: 3%;
+        padding-top: 3%;
+        padding-bottom: 3%;
+        // border-top: 2px solid navy;
+        border: 1px solid #c4c46b;
+        background-color: #f3f3c9;
+        .name-area {
+            width: 80%;
+            height: 30px;
+        }
+        .comment-area {
+            width: 90%;
+            height: 30px;
+        }
+        .comment-button {
+            height: 35px;
+        }
+    }
+}
